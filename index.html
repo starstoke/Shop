@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>Starstoke Shop</title>
-  <meta name="description" content="Starstoke Shop – Exclusive merchandise from the independent music label.">
+  <title>Clothing Item 1 - Starstoke Shop</title>
+  <meta name="description" content="Purchase Clothing Item 1 from Starstoke Shop.">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap');
-
+    /* Reuse main page styles with adjustments for product page */
     * {
       margin: 0;
       padding: 0;
@@ -54,220 +54,106 @@
     .content-wrapper {
       position: relative;
       z-index: 2;
-      padding: 80px 15px 15px;
+      padding: 70px 15px 15px;
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 800px;
       margin: 0 auto;
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      max-height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nav-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 100;
-      letter-spacing: 0.15em;
-      transition: color 0.4s cubic-bezier(0.33, 0, 0.66, 1);
-      position: relative;
-      padding: 8px 10px;
-      white-space: nowrap;
-    }
-
-    .nav-links a:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      right: -10px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 1px;
-      height: 16px;
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    .nav-links a:hover {
-      color: #FFF8E1;
-      text-shadow: 0 0 10px rgba(255, 248, 225, 0.5);
     }
 
     header {
       text-align: center;
-      padding: 80px 20px 60px;
-      position: relative;
+      padding: 40px 20px 20px;
       background: rgba(0, 0, 0, 0.6);
-      border-radius: 30px;
+      border-radius: 20px;
       backdrop-filter: blur(12px);
-      margin-bottom: 50px;
+      margin-bottom: 30px;
     }
 
     .logo {
-      font-size: clamp(2rem, 5vw, 4rem);
+      font-size: clamp(1.6rem, 5vw, 2.5rem);
       font-weight: 100;
       letter-spacing: 0.2em;
       color: #fff;
-      margin-bottom: 20px;
-      animation: fadeInUp 1.2s cubic-bezier(0.33, 0, 0.66, 1);
-      font-family: 'Inter', sans-serif;
+      margin-bottom: 10px;
     }
 
     .logo .star {
       display: inline-block;
       color: #FFF8E1;
       animation: sparkle 2.5s ease-in-out infinite;
-      text-shadow: 0 0 15px rgba(255, 248, 225, 0.4),
-                   0 0 30px rgba(255, 248, 225, 0.2);
     }
 
     @keyframes sparkle {
-      0%, 100% { 
-        transform: scale(1) rotate(0deg);
-        opacity: 1;
-      }
-      50% { 
-        transform: scale(1.1) rotate(180deg);
-        opacity: 0.9;
-      }
-    }
-
-    .tagline {
-      font-size: clamp(0.85rem, 1.8vw, 1rem);
-      color: #ccc;
-      max-width: 600px;
-      margin: 0 auto;
-      font-weight: 100;
-      letter-spacing: 0.15em;
-      animation: fadeInUp 1.2s cubic-bezier(0.33, 0, 0.66, 1) 0.3s backwards;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+      50% { transform: scale(1.1) rotate(180deg); opacity: 0.9; }
     }
 
     .section {
-      margin-bottom: 60px;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 0.8s cubic-bezier(0.33, 0, 0.66, 1), transform 0.8s cubic-bezier(0.33, 0, 0.66, 1);
       background: rgba(0, 0, 0, 0.6);
-      border-radius: 30px;
-      padding: 30px;
+      border-radius: 20px;
+      padding: 25px;
       backdrop-filter: blur(12px);
-    }
-
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0);
+      margin-bottom: 30px;
     }
 
     .section-title {
-      font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+      font-size: clamp(1.4rem, 2.8vw, 1.8rem);
       font-weight: 100;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
       text-align: center;
       letter-spacing: 0.2em;
-      background: linear-gradient(135deg, #FFF8E1 0%, #FFE0B2 100%);
+      background: linear-gradient(135deg, #FFF8E1, #FFE0B2);
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
+    .swiper {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto 20px;
     }
 
-    .card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 30px;
-      padding: 30px 15px;
-      backdrop-filter: blur(12px);
-      transition: all 0.4s cubic-bezier(0.33, 0, 0.66, 1);
-      position: relative;
-      overflow: hidden;
-      text-align: center;
-      cursor: pointer;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(255, 248, 225, 0.1);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .card img {
-      max-width: 100%;
+    .swiper-slide img {
+      width: 100%;
       height: auto;
-      border-radius: 20px;
-      margin-bottom: 12px;
-      loading: lazy;
+      border-radius: 15px;
+      object-fit: cover;
     }
 
-    .card-title {
-      font-size: 1.1rem;
-      font-weight: 100;
-      margin-bottom: 8px;
-      letter-spacing: 0.15em;
+    .product-details {
+      text-align: center;
+      margin-bottom: 20px;
     }
 
-    .card-subtitle {
+    .product-description {
+      font-size: 0.9rem;
       color: #ccc;
-      font-size: 0.8rem;
-      margin-bottom: 12px;
+      margin-bottom: 20px;
       font-weight: 100;
       letter-spacing: 0.1em;
     }
 
-    .card-price {
-      font-size: 1.3rem;
+    .product-price {
+      font-size: 1.2rem;
       font-weight: 100;
       background: linear-gradient(135deg, #FFF8E1, #FFE0B2);
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       background-clip: text;
-      display: inline-block;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
     }
 
-    .currency-selector {
+    .size-selector {
       display: flex;
       justify-content: center;
-      gap: 12px;
-      margin-bottom: 25px;
+      gap: 10px;
+      margin-bottom: 20px;
     }
 
-    .currency-btn {
+    .size-btn {
       padding: 6px 12px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -280,112 +166,98 @@
       letter-spacing: 0.15em;
       min-width: 50px;
       text-align: center;
+      touch-action: manipulation;
     }
 
-    .currency-btn.active {
+    .size-btn.active {
       background: linear-gradient(135deg, #FFF8E1, #FFE0B2);
       color: #000;
     }
 
-    .currency-btn:hover:not(.active) {
+    .size-btn:hover:not(.active) {
       background: rgba(255, 255, 255, 0.1);
       border-color: rgba(255, 248, 225, 0.3);
     }
 
-    footer {
-      text-align: center;
-      padding: 60px 15px 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      margin-top: 60px;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 30px;
-      backdrop-filter: blur(12px);
-    }
-
-    .social-links {
+    .order-form {
       display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 25px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 400px;
+      margin: 0 auto;
     }
 
-    .social-links a {
-      padding: 8px 20px;
+    .order-form input {
+      padding: 10px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 30px;
+      border-radius: 10px;
       color: #fff;
-      text-decoration: none;
       font-weight: 100;
-      font-size: 0.75rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+    }
+
+    .order-form input:focus {
+      outline: none;
+      border-color: rgba(255, 248, 225, 0.3);
+    }
+
+    .order-form button {
+      padding: 10px;
+      background: linear-gradient(135deg, #FFF8E1, #FFE0B2);
+      border: none;
+      border-radius: 20px;
+      color: #000;
+      font-weight: 100;
+      font-size: 0.9rem;
+      cursor: pointer;
+      letter-spacing: 0.15em;
       transition: all 0.4s cubic-bezier(0.33, 0, 0.66, 1);
-      letter-spacing: 0.15em;
-      min-width: 70px;
-      text-align: center;
     }
 
-    .social-links a:hover {
-      background: rgba(255, 248, 225, 0.1);
-      border-color: rgba(255, 248, 225, 0.2);
-      transform: translateY(-2px);
-      box-shadow: 0 0 10px rgba(255, 248, 225, 0.2);
+    .order-form button:hover {
+      background: linear-gradient(135deg, #FFE0B2, #FFF8E1);
     }
 
-    .copyright {
-      color: #999;
-      margin-top: 25px;
+    .error {
+      color: #ff6b6b;
       font-size: 0.75rem;
-      font-weight: 100;
-      letter-spacing: 0.15em;
+      text-align: center;
+      display: none;
     }
 
     @media (max-width: 768px) {
       .content-wrapper {
-        padding: 70px 10px 10px;
-      }
-
-      .nav-links {
-        gap: 12px;
-        justify-content: center;
-      }
-
-      .nav-links a {
-        font-size: 0.8rem;
-        padding: 6px 8px;
-      }
-
-      .nav-links a:not(:last-child)::after {
-        right: -6px;
-        height: 10px;
+        padding: 60px 10px 10px;
       }
 
       header {
-        padding: 50px 10px 30px;
+        padding: 30px 10px 15px;
       }
 
       .logo {
-        font-size: clamp(1.8rem, 7vw, 2.5rem);
-      }
-
-      .tagline {
-        font-size: clamp(0.75rem, 1.8vw, 0.85rem);
-        padding: 0 10px;
+        font-size: clamp(1.4rem, 6vw, 1.8rem);
       }
 
       .section {
-        margin-bottom: 50px;
-        padding: 25px 10px;
+        padding: 20px 10px;
       }
 
       .section-title {
-        font-size: clamp(1.4rem, 2.8vw, 1.8rem);
-        margin-bottom: 25px;
+        font-size: clamp(1.2rem, 2.8vw, 1.5rem);
       }
 
-      .grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
+      .swiper {
+        max-width: 100%;
+      }
+
+      .product-description {
+        font-size: 0.8rem;
+      }
+
+      .order-form input, .order-form button {
+        font-size: 0.8rem;
       }
     }
   </style>
@@ -394,81 +266,55 @@
   <div id="vanta-bg"></div>
   <div class="grain-overlay"></div>
 
-  <nav>
-    <div class="container">
-      <div class="nav-links">
-        <a href="index.html#news">News</a>
-        <a href="shop.html">Shop</a>
-        <a href="index.html#artists">Artists</a>
-        <a href="starstoketv.html">TV</a>
-        <a href="index.html#about">About</a>
-        <a href="index.html#contact">Contact Us</a>
-      </div>
-    </div>
-  </nav>
-
   <div class="content-wrapper">
     <div class="container">
       <header>
         <h1 class="logo">St<span class="star">★</span>rstoke Shop</h1>
-        <p class="tagline">Exclusive merchandise for music lovers</p>
       </header>
 
       <section class="section">
-        <h2 class="section-title">Merchandise</h2>
-        <div class="currency-selector">
-          <button class="currency-btn active" data-currency="THB">THB</button>
-          <button class="currency-btn" data-currency="RUB">RUB</button>
-          <button class="currency-btn" data-currency="USDT">USDT</button>
+        <h2 class="section-title">Clothing Item 1</h2>
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="https://via.placeholder.com/500x500?text=Clothing+Item+1+Image+1" alt="Clothing Item 1 Image 1" loading="lazy">
+            </div>
+            <div class="swiper-slide">
+              <img src="https://via.placeholder.com/500x500?text=Clothing+Item+1+Image+2" alt="Clothing Item 1 Image 2" loading="lazy">
+            </div>
+            <div class="swiper-slide">
+              <img src="https://via.placeholder.com/500x500?text=Clothing+Item+1+Image+3" alt="Clothing Item 1 Image 3" loading="lazy">
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
         </div>
-        <div class="grid">
-          <div class="card" onclick="window.open('t-shirt.html', 'popup', 'width=600,height=400');">
-            <img src="https://via.placeholder.com/300x300?text=T-Shirt" alt="Starstoke T-Shirt" loading="lazy">
-            <h3 class="card-title">Starstoke T-Shirt</h3>
-            <p class="card-subtitle">Minimalist design, premium quality</p>
-            <div class="card-price">100 <span class="currency">THB</span></div>
-          </div>
-          <div class="card" onclick="window.open('cap.html', 'popup', 'width=600,height=400');">
-            <img src="https://via.placeholder.com/300x300?text=Cap" alt="Limited Cap" loading="lazy">
-            <h3 class="card-title">Limited Cap</h3>
-            <p class="card-subtitle">Limited edition, top standard</p>
-            <div class="card-price">100 <span class="currency">THB</span></div>
-          </div>
-          <div class="card" onclick="window.open('sneakers.html', 'popup', 'width=600,height=400');">
-            <img src="https://via.placeholder.com/300x300?text=Sneakers" alt="Sneakers Collab" loading="lazy">
-            <h3 class="card-title">Sneakers Collab</h3>
-            <p class="card-subtitle">Collaborative collection with leading brands</p>
-            <div class="card-price">100 <span class="currency">THB</span></div>
-          </div>
-          <div class="card" onclick="window.open('accessories.html', 'popup', 'width=600,height=400');">
-            <img src="https://via.placeholder.com/300x300?text=Accessories" alt="Accessories" loading="lazy">
-            <h3 class="card-title">Accessories</h3>
-            <p class="card-subtitle">Headphones, bags, and other essentials</p>
-            <div class="card-price">100 <span class="currency">THB</span></div>
+        <div class="product-details">
+          <p class="product-description">This is Clothing Item 1, crafted with premium materials for comfort and style. Perfect for music lovers who want to express their unique taste.</p>
+          <div class="product-price">100 <span class="currency">THB</span></div>
+          <div class="size-selector">
+            <button class="size-btn active" data-size="S">S</button>
+            <button class="size-btn" data-size="M">M</button>
+            <button class="size-btn" data-size="L">L</button>
           </div>
         </div>
+        <form class="order-form" id="order-form">
+          <input type="text" id="name" placeholder="Your Name" required>
+          <input type="email" id="email" placeholder="Your Email" required>
+          <p class="error" id="form-error">Please fill in all fields correctly.</p>
+          <button type="submit">Place Order</button>
+        </form>
       </section>
-
-      <footer>
-        <h2 class="logo" style="font-size: 1.8rem; margin-bottom: 15px;">St<span class="star">★</span>rstoke</h2>
-        <div class="social-links">
-          <a href="https://www.instagram.com/starstoke777?igsh=eWFtYWJyZjcxeWlv&utm_source=qr">Instagram</a>
-          <a href="https://on.soundcloud.com/gShwnGE3RKMUyBKHi7">Soundcloud</a>
-          <a href="https://youtube.com/@starstoketv?si=7t31o1fBdyO8SmLE">Youtube</a>
-          <a href="#">Telegram</a>
-        </div>
-        <p class="copyright">© 2025 Starstoke Label. All rights reserved.</p>
-      </footer>
     </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Vanta.js initialization (same as main)
+      // Vanta.js initialization
       const isMobile = window.innerWidth <= 768;
-      let vantaEffect = VANTA.NET({
+      VANTA.NET({
         el: "#vanta-bg",
         mouseControls: !isMobile,
         touchControls: isMobile,
@@ -486,18 +332,45 @@
         lineOpacity: isMobile ? 0.15 : 0.25
       });
 
-      // Currency selector (same as main)
-      const currencyButtons = document.querySelectorAll('.currency-btn');
-      const prices = document.querySelectorAll('.card-price .currency');
-      currencyButtons.forEach(button => {
+      // Swiper initialization for carousel
+      new Swiper('.swiper', {
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        slidesPerView: 1,
+        spaceBetween: 10,
+      });
+
+      // Size selector
+      const sizeButtons = document.querySelectorAll('.size-btn');
+      sizeButtons.forEach(button => {
         button.addEventListener('click', () => {
-          currencyButtons.forEach(btn => btn.classList.remove('active'));
+          sizeButtons.forEach(btn => btn.classList.remove('active'));
           button.classList.add('active');
-          const currency = button.dataset.currency;
-          prices.forEach(price => {
-            price.textContent = currency;
-          });
         });
+      });
+
+      // Form validation
+      const form = document.getElementById('order-form');
+      const error = document.getElementById('form-error');
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (name && emailRegex.test(email)) {
+          error.style.display = 'none';
+          alert('Order placed successfully!'); // Replace with actual order submission logic
+          form.reset();
+        } else {
+          error.style.display = 'block';
+        }
       });
     });
   </script>
