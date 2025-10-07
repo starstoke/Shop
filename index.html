@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>Clothing Item 1 - Starstoke Shop</title>
-  <meta name="description" content="Purchase Clothing Item 1 from Starstoke Shop.">
+  <title>Starstoke Shop</title>
+  <meta name="description" content="Explore Starstoke Shop's merchandise and market categories.">
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
   <style>
-    /* Reuse main page styles with adjustments for product page */
     * {
       margin: 0;
       padding: 0;
@@ -54,40 +53,12 @@
     .content-wrapper {
       position: relative;
       z-index: 2;
-      padding: 70px 15px 15px;
+      padding: 15px;
     }
 
     .container {
-      max-width: 800px;
+      max-width: 1000px;
       margin: 0 auto;
-    }
-
-    header {
-      text-align: center;
-      padding: 40px 20px 20px;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 20px;
-      backdrop-filter: blur(12px);
-      margin-bottom: 30px;
-    }
-
-    .logo {
-      font-size: clamp(1.6rem, 5vw, 2.5rem);
-      font-weight: 100;
-      letter-spacing: 0.2em;
-      color: #fff;
-      margin-bottom: 10px;
-    }
-
-    .logo .star {
-      display: inline-block;
-      color: #FFF8E1;
-      animation: sparkle 2.5s ease-in-out infinite;
-    }
-
-    @keyframes sparkle {
-      0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
-      50% { transform: scale(1.1) rotate(180deg); opacity: 0.9; }
     }
 
     .section {
@@ -108,6 +79,83 @@
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    .category-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .item {
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .item img {
+      width: 100%;
+      max-width: 250px;
+      height: auto;
+      border-radius: 15px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .item-title {
+      font-size: 1rem;
+      color: #ccc;
+      font-weight: 100;
+      letter-spacing: 0.1em;
+    }
+
+    .subcategory-list {
+      list-style: none;
+      text-align: center;
+    }
+
+    .subcategory-list li {
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-bottom: 10px;
+      font-weight: 100;
+      letter-spacing: 0.1em;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+    }
+
+    .modal-content {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+      padding: 20px;
+      max-width: 90%;
+      width: 500px;
+      backdrop-filter: blur(12px);
+      position: relative;
+      margin: 20px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      color: #fff;
+      cursor: pointer;
+      background: none;
+      border: none;
     }
 
     .swiper {
@@ -229,15 +277,7 @@
 
     @media (max-width: 768px) {
       .content-wrapper {
-        padding: 60px 10px 10px;
-      }
-
-      header {
-        padding: 30px 10px 15px;
-      }
-
-      .logo {
-        font-size: clamp(1.4rem, 6vw, 1.8rem);
+        padding: 10px;
       }
 
       .section {
@@ -246,6 +286,19 @@
 
       .section-title {
         font-size: clamp(1.2rem, 2.8vw, 1.5rem);
+      }
+
+      .category-items {
+        grid-template-columns: 1fr;
+      }
+
+      .item img {
+        max-width: 200px;
+      }
+
+      .modal-content {
+        width: 95%;
+        padding: 15px;
       }
 
       .swiper {
@@ -268,42 +321,74 @@
 
   <div class="content-wrapper">
     <div class="container">
-      <header>
-        <h1 class="logo">St<span class="star">★</span>rstoke Shop</h1>
-      </header>
-
+      <!-- Category 1: Starstoke Merch -->
       <section class="section">
-        <h2 class="section-title">Clothing Item 1</h2>
-        <div class="swiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img src="https://via.placeholder.com/500x500?text=Clothing+Item+1+Image+1" alt="Clothing Item 1 Image 1" loading="lazy">
-            </div>
-            <div class="swiper-slide">
-              <img src="https://via.placeholder.com/500x500?text=Clothing+Item+1+Image+2" alt="Clothing Item 1 Image 2" loading="lazy">
-            </div>
-            <div class="swiper-slide">
-              <img src="https://via.placeholder.com/500x500?text=Clothing+Item+1+Image+3" alt="Clothing Item 1 Image 3" loading="lazy">
-            </div>
+        <h2 class="section-title">Starstoke Merch</h2>
+        <div class="category-items">
+          <div class="item" data-item="merch1">
+            <img src="https://via.placeholder.com/250x250?text=Merch+1" alt="Merch 1" loading="lazy">
+            <p class="item-title">Merch 1</p>
           </div>
-          <div class="swiper-pagination"></div>
-        </div>
-        <div class="product-details">
-          <p class="product-description">This is Clothing Item 1, crafted with premium materials for comfort and style. Perfect for music lovers who want to express their unique taste.</p>
-          <div class="product-price">100 <span class="currency">THB</span></div>
-          <div class="size-selector">
-            <button class="size-btn active" data-size="S">S</button>
-            <button class="size-btn" data-size="M">M</button>
-            <button class="size-btn" data-size="L">L</button>
+          <div class="item" data-item="merch2">
+            <img src="https://via.placeholder.com/250x250?text=Merch+2" alt="Merch 2" loading="lazy">
+            <p class="item-title">Merch 2</p>
+          </div>
+          <div class="item" data-item="merch3">
+            <img src="https://via.placeholder.com/250x250?text=Merch+3" alt="Merch 3" loading="lazy">
+            <p class="item-title">Merch 3</p>
           </div>
         </div>
-        <form class="order-form" id="order-form">
-          <input type="text" id="name" placeholder="Your Name" required>
-          <input type="email" id="email" placeholder="Your Email" required>
-          <p class="error" id="form-error">Please fill in all fields correctly.</p>
-          <button type="submit">Place Order</button>
-        </form>
       </section>
+
+      <!-- Category 2: Starstoke Market -->
+      <section class="section">
+        <h2 class="section-title">Starstoke Market</h2>
+        <ul class="subcategory-list">
+          <li>Clothing</li>
+          <li>Accessories</li>
+          <li>Other Goods</li>
+        </ul>
+      </section>
+
+      <!-- Category 3: Other Items -->
+      <section class="section">
+        <h2 class="section-title">Other Items</h2>
+        <div class="category-items">
+          <div class="item">
+            <img src="https://via.placeholder.com/250x250?text=Item+1" alt="Item 1" loading="lazy">
+            <p class="item-title">Item 1</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Modal for Merch Items -->
+  <div class="modal" id="item-modal">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <h2 class="section-title" id="modal-title">Merch Item</h2>
+      <div class="swiper" id="modal-swiper">
+        <div class="swiper-wrapper">
+          <!-- Dynamically populated -->
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="product-details">
+        <p class="product-description" id="modal-description">Description of the item.</p>
+        <div class="product-price" id="modal-price">100 <span class="currency">THB</span></div>
+        <div class="size-selector" id="modal-size-selector">
+          <button class="size-btn active" data-size="S">S</button>
+          <button class="size-btn" data-size="M">M</button>
+          <button class="size-btn" data-size="L">L</button>
+        </div>
+      </div>
+      <form class="order-form" id="modal-order-form">
+        <input type="text" id="modal-name" placeholder="Your Name" required>
+        <input type="email" id="modal-email" placeholder="Your Email" required>
+        <p class="error" id="modal-form-error">Please fill in all fields correctly.</p>
+        <button type="submit">Place Order</button>
+      </form>
     </div>
   </div>
 
@@ -332,23 +417,50 @@
         lineOpacity: isMobile ? 0.15 : 0.25
       });
 
-      // Swiper initialization for carousel
-      new Swiper('.swiper', {
-        loop: true,
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
+      // Mock data for merch items
+      const merchData = {
+        merch1: {
+          title: "Merch 1",
+          description: "Premium Merch 1, crafted for style and comfort. Ideal for music enthusiasts.",
+          price: "100 THB",
+          images: [
+            "https://via.placeholder.com/500x500?text=Merch+1+Image+1",
+            "https://via.placeholder.com/500x500?text=Merch+1+Image+2",
+            "https://via.placeholder.com/500x500?text=Merch+1+Image+3"
+          ]
         },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
+        merch2: {
+          title: "Merch 2",
+          description: "Unique Merch 2, designed with premium materials for a bold look.",
+          price: "120 THB",
+          images: [
+            "https://via.placeholder.com/500x500?text=Merch+2+Image+1",
+            "https://via.placeholder.com/500x500?text=Merch+2+Image+2",
+            "https://via.placeholder.com/500x500?text=Merch+2+Image+3"
+          ]
         },
-        slidesPerView: 1,
-        spaceBetween: 10,
-      });
+        merch3: {
+          title: "Merch 3",
+          description: "Stylish Merch 3, perfect for expressing your unique taste.",
+          price: "150 THB",
+          images: [
+            "https://via.placeholder.com/500x500?text=Merch+3+Image+1",
+            "https://via.placeholder.com/500x500?text=Merch+3+Image+2",
+            "https://via.placeholder.com/500x500?text=Merch+3+Image+3"
+          ]
+        }
+      };
 
-      // Size selector
-      const sizeButtons = document.querySelectorAll('.size-btn');
+      // Modal handling
+      const modal = document.getElementById('item-modal');
+      const modalTitle = document.getElementById('modal-title');
+      const modalDescription = document.getElementById('modal-description');
+      const modalPrice = document.getElementById('modal-price');
+      const modalSwiperWrapper = document.querySelector('#modal-swiper .swiper-wrapper');
+      let modalSwiper = null;
+
+      // Initialize size selector
+      const sizeButtons = document.querySelectorAll('#modal-size-selector .size-btn');
       sizeButtons.forEach(button => {
         button.addEventListener('click', () => {
           sizeButtons.forEach(btn => btn.classList.remove('active'));
@@ -357,19 +469,73 @@
       });
 
       // Form validation
-      const form = document.getElementById('order-form');
-      const error = document.getElementById('form-error');
+      const form = document.getElementById('modal-order-form');
+      const error = document.getElementById('modal-form-error');
       form.addEventListener('submit', e => {
         e.preventDefault();
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
+        const name = document.getElementById('modal-name').value.trim();
+        const email = document.getElementById('modal-email').value.trim();
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (name && emailRegex.test(email)) {
           error.style.display = 'none';
-          alert('Order placed successfully!'); // Replace with actual order submission logic
+          alert('Order placed successfully!');
           form.reset();
+          modal.style.display = 'none';
         } else {
           error.style.display = 'block';
+        }
+      });
+
+      // Open modal on item click
+      document.querySelectorAll('.item[data-item]').forEach(item => {
+        item.addEventListener('click', () => {
+          const itemId = item.getAttribute('data-item');
+          const data = merchData[itemId];
+
+          // Update modal content
+          modalTitle.textContent = data.title;
+          modalDescription.textContent = data.description;
+          modalPrice.innerHTML = `${data.price} <span class="currency">THB</span>`;
+
+          // Populate swiper slides
+          modalSwiperWrapper.innerHTML = data.images.map(img => `
+            <div class="swiper-slide">
+              <img src="${img}" alt="${data.title} Image" loading="lazy">
+            </div>
+          `).join('');
+
+          // Initialize or update swiper
+          if (modalSwiper) {
+            modalSwiper.destroy(true, true);
+          }
+          modalSwiper = new Swiper('#modal-swiper', {
+            loop: true,
+            autoplay: {
+              delay: 3000,
+              disableOnInteraction: false,
+            },
+            pagination: {
+              el: '.swiper-pagination',
+              clickable: true,
+            },
+            slidesPerView: 1,
+            spaceBetween: 10,
+          });
+
+          // Show modal
+          modal.style.display = 'flex';
+        });
+      });
+
+      // Close modal
+      document.querySelector('.modal-close').addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+
+      // Close modal on outside click
+      modal.addEventListener('click', e => {
+        if (e.target === modal) {
+          modal.style.display = 'none';
         }
       });
     });
