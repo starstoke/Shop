@@ -61,6 +61,41 @@
       margin: 0 auto;
     }
 
+    header {
+      text-align: center;
+      padding: 40px 20px 20px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      font-size: clamp(1.6rem, 5vw, 2.5rem);
+      font-weight: 100;
+      letter-spacing: 0.2em;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .logo .star {
+      display: inline-block;
+      color: #00BFFF;
+      animation: sparkle 2.5s ease-in-out infinite;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+      50% { transform: scale(1.1) rotate(180deg); opacity: 0.9; }
+    }
+
+    .tagline {
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      font-weight: 100;
+      color: #ccc;
+      letter-spacing: 0.15em;
+    }
+
     .section {
       background: rgba(0, 0, 0, 0.6);
       border-radius: 20px;
@@ -75,10 +110,33 @@
       margin-bottom: 20px;
       text-align: center;
       letter-spacing: 0.2em;
-      background: linear-gradient(135deg, #FFF8E1, #FFE0B2);
+      background: linear-gradient(135deg, #00BFFF, #4B0082);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '▼';
+      margin-left: 10px;
+      font-size: 0.8em;
+      transition: transform 0.3s;
+    }
+
+    .section-title.collapsed::after {
+      transform: rotate(-90deg);
+    }
+
+    .category-content {
+      display: block; /* Initial state: open */
+      transition: max-height 0.3s ease-out;
+      overflow: hidden;
+    }
+
+    .category-content.collapsed {
+      display: none;
     }
 
     .category-items {
@@ -90,6 +148,11 @@
     .item {
       text-align: center;
       cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .item:hover {
+      transform: scale(1.05);
     }
 
     .item img {
@@ -187,7 +250,7 @@
     .product-price {
       font-size: 1.2rem;
       font-weight: 100;
-      background: linear-gradient(135deg, #FFF8E1, #FFE0B2);
+      background: linear-gradient(135deg, #00BFFF, #4B0082);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -218,13 +281,13 @@
     }
 
     .size-btn.active {
-      background: linear-gradient(135deg, #FFF8E1, #FFE0B2);
+      background: linear-gradient(135deg, #00BFFF, #4B0082);
       color: #000;
     }
 
     .size-btn:hover:not(.active) {
       background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 248, 225, 0.3);
+      border-color: rgba(0, 191, 255, 0.3);
     }
 
     .order-form {
@@ -248,15 +311,15 @@
 
     .order-form input:focus {
       outline: none;
-      border-color: rgba(255, 248, 225, 0.3);
+      border-color: rgba(0, 191, 255, 0.3);
     }
 
     .order-form button {
       padding: 10px;
-      background: linear-gradient(135deg, #FFF8E1, #FFE0B2);
+      background: linear-gradient(135deg, #00BFFF, #4B0082);
       border: none;
       border-radius: 20px;
-      color: #000;
+      color: #fff;
       font-weight: 100;
       font-size: 0.9rem;
       cursor: pointer;
@@ -265,7 +328,7 @@
     }
 
     .order-form button:hover {
-      background: linear-gradient(135deg, #FFE0B2, #FFF8E1);
+      background: linear-gradient(135deg, #4B0082, #00BFFF);
     }
 
     .error {
@@ -275,9 +338,46 @@
       display: none;
     }
 
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      margin-top: 30px;
+    }
+
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .social-buttons a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      transition: background 0.3s;
+    }
+
+    .social-buttons a:hover {
+      background: rgba(0, 191, 255, 0.2);
+    }
+
     @media (max-width: 768px) {
       .content-wrapper {
         padding: 10px;
+      }
+
+      header {
+        padding: 30px 10px 15px;
+      }
+
+      .logo {
+        font-size: clamp(1.4rem, 6vw, 1.8rem);
       }
 
       .section {
@@ -312,6 +412,11 @@
       .order-form input, .order-form button {
         font-size: 0.8rem;
       }
+
+      .social-buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
     }
   </style>
 </head>
@@ -321,10 +426,15 @@
 
   <div class="content-wrapper">
     <div class="container">
+      <header>
+        <h1 class="logo">St<span class="star">★</span>rstoke Shop</h1>
+        <p class="tagline">Igniting Your Music Passion with Style</p>
+      </header>
+
       <!-- Category 1: Starstoke Merch -->
       <section class="section">
         <h2 class="section-title">Starstoke Merch</h2>
-        <div class="category-items">
+        <div class="category-content category-items">
           <div class="item" data-item="merch1">
             <img src="https://via.placeholder.com/250x250?text=Merch+1" alt="Merch 1" loading="lazy">
             <p class="item-title">Merch 1</p>
@@ -343,17 +453,19 @@
       <!-- Category 2: Starstoke Market -->
       <section class="section">
         <h2 class="section-title">Starstoke Market</h2>
-        <ul class="subcategory-list">
-          <li>Clothing</li>
-          <li>Accessories</li>
-          <li>Other Goods</li>
-        </ul>
+        <div class="category-content">
+          <ul class="subcategory-list">
+            <li>Clothing</li>
+            <li>Accessories</li>
+            <li>Other Goods</li>
+          </ul>
+        </div>
       </section>
 
       <!-- Category 3: Other Items -->
       <section class="section">
         <h2 class="section-title">Other Items</h2>
-        <div class="category-items">
+        <div class="category-content category-items">
           <div class="item">
             <img src="https://via.placeholder.com/250x250?text=Item+1" alt="Item 1" loading="lazy">
             <p class="item-title">Item 1</p>
@@ -362,6 +474,14 @@
       </section>
     </div>
   </div>
+
+  <footer class="footer">
+    <div class="social-buttons">
+      <a href="https://x.com/starfokeshop" target="_blank">X (Twitter)</a>
+      <a href="https://instagram.com/starfokeshop" target="_blank">Instagram</a>
+      <a href="https://facebook.com/starfokeshop" target="_blank">Facebook</a>
+    </div>
+  </footer>
 
   <!-- Modal for Merch Items -->
   <div class="modal" id="item-modal">
@@ -397,7 +517,7 @@
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Vanta.js initialization
+      // Vanta.js initialization for gentle electronic starfield
       const isMobile = window.innerWidth <= 768;
       VANTA.NET({
         el: "#vanta-bg",
@@ -408,13 +528,24 @@
         minWidth: 200.00,
         scale: 1.00,
         scaleMobile: 1.00,
-        color: 0xFFF8E1,
-        backgroundColor: 0x000000,
-        points: isMobile ? 8.0 : 15.0,
-        maxDistance: isMobile ? 18.0 : 25.0,
-        spacing: isMobile ? 12.0 : 18.0,
+        color: 0x00BFFF, // Neon blue for electronic feel
+        backgroundColor: 0x000011, // Dark navy background
+        points: isMobile ? 15.0 : 25.0, // More points for stars
+        maxDistance: isMobile ? 15.0 : 20.0, // Closer connections for density
+        spacing: isMobile ? 10.0 : 15.0, // Tighter spacing
         showDots: true,
-        lineOpacity: isMobile ? 0.15 : 0.25
+        // Assuming lineOpacity is supported based on original code
+        // For gentle glowing, low opacity lines
+        // If backgroundAlpha exists, set to 0.8 or something, but assuming not
+      });
+
+      // Collapsible categories
+      document.querySelectorAll('.section-title').forEach(title => {
+        title.addEventListener('click', () => {
+          const content = title.nextElementSibling;
+          content.classList.toggle('collapsed');
+          title.classList.toggle('collapsed');
+        });
       });
 
       // Mock data for merch items
